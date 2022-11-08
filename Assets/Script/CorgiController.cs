@@ -19,6 +19,10 @@ public class CorgiController : MonoBehaviour
     public Vector3 Vfx_Bark_Offset;
     public float Vfx_Bark_Dur;
 
+    public GameObject Vfx_Charge;
+    public GameObject ChargeVFX;
+    public bool ChargeVfxTrigger;
+
     public GameObject Vfx_SuperBark_1;
     public GameObject Vfx_SuperBark_2;
     public Vector3 Vfx_SuperBark_Offset;
@@ -159,6 +163,7 @@ public class CorgiController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            ChargeVfxTrigger = true;
             ChargeCount = 0;
         }
 
@@ -199,6 +204,11 @@ public class CorgiController : MonoBehaviour
 
     void BeamCharge()
     {
+        if (ChargeVfxTrigger)
+        {
+            ChargeVFX = (GameObject)Instantiate(Vfx_Charge, transform.position + new Vector3(0.2f, 0, 0), transform.rotation, transform);
+            ChargeVfxTrigger = false;
+        }
         //업데이트 되고있을 항목
         Vector3 startPos = transform.position;
         Vector3 direction = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position;
@@ -209,6 +219,8 @@ public class CorgiController : MonoBehaviour
 
     void LaunchBeam()
     {
+        Destroy(ChargeVFX, 0.15f);
+        ChargeVfxTrigger = true;
         var randomVFX = Random.Range(0, 2);
         GameObject addObject = (GameObject)Instantiate(randomVFX == 0 ? Vfx_SuperBark_2 : Vfx_SuperBark_1, transform.position + Vfx_SuperBark_Offset, transform.rotation, transform);
         //var row = addObject.GetComponent<ParticleSystem>().textureSheetAnimation.rowIndex;

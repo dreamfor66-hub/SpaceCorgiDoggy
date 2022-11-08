@@ -1128,6 +1128,9 @@ MonoBehaviour:
   Vfx_Bark: {fileID: 106150, guid: 9dee279dde7773842bd2a9ae8e027aa4, type: 3}
   Vfx_Bark_Offset: {x: 1.5, y: 0.2, z: 0}
   Vfx_Bark_Dur: 1
+  Vfx_Charge: {fileID: 147226, guid: 4647dea8d8f4b6d4e8b4448a970bc5db, type: 3}
+  ChargeVFX: {fileID: 0}
+  ChargeVfxTrigger: 0
   Vfx_SuperBark_1: {fileID: 106150, guid: 7743aad8dd2122348b2f3581e21cdf2d, type: 3}
   Vfx_SuperBark_2: {fileID: 106150, guid: c3df5b997f8a6f544b9b9d4ab7994c3a, type: 3}
   Vfx_SuperBark_Offset: {x: -1.5, y: 0.5, z: 0}
@@ -1179,7 +1182,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
