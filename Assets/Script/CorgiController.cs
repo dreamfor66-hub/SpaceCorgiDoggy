@@ -122,7 +122,7 @@ public class CorgiController : MonoBehaviour
         int layerMask = 1 << LayerMask.NameToLayer("Default");
         if (Physics.Raycast(startPos, direction, out hit1, dist, layerMask))
         {
-            if (hit1.collider.tag == "HurtCollider")
+            if (hit1.collider.tag == "PlanetCollider")
             {
                 if (needHitTest)
                 {
