@@ -73,6 +73,7 @@ public class CorgiController : MonoBehaviour
         {
             Debug.Log("배터리 먹음");
             Destroy(collision.gameObject);
+            Destroy(collision.transform.parent.gameObject);
         }
     }
     /// 코기 <=> [행성, 배터리] 충돌체크 후 적절히 처리
