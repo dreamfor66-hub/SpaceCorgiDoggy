@@ -227,6 +227,7 @@ public class CorgiController : MonoBehaviour
         {
             var pc = colls.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
             pc.isDestroy = true;
+            Destroy(colls); // 콜라이더는 즉시 삭제
         }
 
 
