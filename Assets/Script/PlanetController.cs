@@ -5,6 +5,7 @@ public class PlanetController : MonoBehaviour
     public GameObject active;
     public GameObject destroyed;
     public float speed = 0.0f;
+    public float COMPLETE_DESTROY_DELAY = 20f;
 
     public bool isDestroy = false;
     // Start is called before the first frame update
@@ -24,7 +25,7 @@ public class PlanetController : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.2f, 1.2f, 1.2f), 0.2f * Time.deltaTime);
 
 
-            Invoke("DestroyPlanet", 5f);
+            Invoke("DestroyPlanet", COMPLETE_DESTROY_DELAY);
         }
     }
 
