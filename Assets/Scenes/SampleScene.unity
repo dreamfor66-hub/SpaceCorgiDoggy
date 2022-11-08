@@ -1591,7 +1591,7 @@ MonoBehaviour:
   SCALE_MIN: 0.2
   SCALE_MAX: 0.7
   SPEED_MIN: 0
-  SPEED_MAX: 0.01
+  SPEED_MAX: 0.007
 --- !u!1 &2063062568
 GameObject:
   m_ObjectHideFlags: 0

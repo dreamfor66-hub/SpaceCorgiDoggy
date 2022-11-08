@@ -27,7 +27,7 @@ public class PlanetController : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.2f, 1.2f, 1.2f), 0.2f * Time.deltaTime);
 
 
-            Invoke("DestroyPlanet", 0.5f);
+            Invoke("DestroyPlanet", 5f);
         }
     }
 

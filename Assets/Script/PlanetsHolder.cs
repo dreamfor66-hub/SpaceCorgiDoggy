@@ -20,7 +20,7 @@ public class PlanetsHolder : MonoBehaviour
     public float SCALE_MAX = 0.7f;
 
     public float SPEED_MIN = 0.0f;
-    public float SPEED_MAX = 0.01f;
+    public float SPEED_MAX = 0.007f;
 
     private List<PlanetController> planetControllers = new();
 
