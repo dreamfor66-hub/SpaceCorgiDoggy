@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e5dd4eab18735c74e967c2fa2e0a4668, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2752ace3a3f7ace4381658bf4bb5ef70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: {fileID: 8583484385865718496}
   destroyed: {fileID: 8583484385510707999}
-  colliderSelf: {fileID: 0}
   speed: 0
+  COMPLETE_DESTROY_DELAY: 20
   isDestroy: 0
 --- !u!1 &8583484385315227666
 GameObject:
