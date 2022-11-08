@@ -28,9 +28,9 @@ public class CorgiController : MonoBehaviour
     public float maxLength;
 
     private LineRenderer lineRenderer;
-    private Ray ray;
-    private RaycastHit hit;
-    private Vector3 rayDir;
+    //private Ray ray;
+    //private RaycastHit hit;
+    //private Vector3 rayDir;
 
     public List<Collider> HitTargets = new List<Collider>();
     public float ChargeCount = 0;
@@ -106,80 +106,6 @@ public class CorgiController : MonoBehaviour
 
     void DrawRay(Vector3 startPos, Vector3 direction, float dist, int index)
     {
-        //ray = new Ray(transform.position, (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position));
-        //lineRenderer.positionCount = 1;
-        //lineRenderer.SetPosition(0, transform.position);
-        //float remainingLength = maxLength;
-
-        //for (int i = 0; i < reflections; i++)
-        //{
-        //    if (Physics.Raycast(ray.origin, ray.direction, out hit, remainingLength))
-        //    {
-        //        lineRenderer.positionCount += 1;
-        //        lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-        //        remainingLength -= Vector3.Distance(ray.origin, hit.point);
-        //        ray = new Ray((hit.point + hit.normal * 0.001f), Vector3.Reflect(ray.direction, hit.normal));
-        //        if (hit.collider.tag != "HurtCollider")
-        //        {
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            lineRenderer.positionCount += 1;
-        //            lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
-        //        }
-        //    }
-        //}
-        //var i = 0;
-        //while (i < reflections)
-        //{
-        //    if (Physics.Raycast(ray.origin, ray.direction, out hit, remainingLength))
-        //    {
-        //        lineRenderer.positionCount += 1;
-        //        lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-        //        remainingLength -= Vector3.Distance(ray.origin, hit.point);
-        //        ray = new Ray((hit.point + hit.normal * 0.0000000001f), Vector3.Reflect(ray.direction, hit.normal));
-        //        if (hit.collider.tag != "HurtCollider")
-        //        {
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            lineRenderer.positionCount += 1;
-        //            lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
-        //        }
-        //    }
-
-        //    i++;
-        //}
-
-        //RaycastHit hit1;
-
-        //        lineRenderer.positionCount = 2;
-        //        lineRenderer.SetPosition(0, transform.position);
-        //;
-
-        //        if (Physics.Raycast(transform.position, (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position), out hit1, maxLength))
-        //        {
-        //            lineRenderer.SetPosition(1, hit1.point);
-
-        //            Vector3 dir2 = Vector3.Reflect((Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position), hit1.normal);
-        //            RaycastHit hit2;
-        //            lineRenderer.positionCount = 3;
-        //            if (Physics.Raycast(hit1.point, dir2, maxLength))
-        //            {
-        //                lineRenderer.SetPosition(2, hit1.point);
-        //            }
-        //            else
-        //            {
-        //                lineRenderer.SetPosition(2, hit1.point + dir2 * maxLength);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            lineRenderer.SetPosition(1,  ((Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position)) * maxLength);
-        //        }
-
         if (reflections < index) return;
 
         lineRenderer.positionCount = index + 2;
@@ -220,11 +146,12 @@ public class CorgiController : MonoBehaviour
             ChargeCount += 20f * Time.deltaTime;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0) && ChargeCount > 20)
+        if (Input.GetKeyUp(KeyCode.Mouse0) && ChargeCount > 5)
         {
             LaunchBeam();
+            ChargeCount = 0;
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0) && ChargeCount < 20)
+        else if (Input.GetKeyUp(KeyCode.Mouse0) && ChargeCount < 5)
         {
             Bark();
         }
@@ -234,13 +161,16 @@ public class CorgiController : MonoBehaviour
             ChargeCount = 100;
         }
 
-        if (ChargeCount == 100)
-        {
-            LaunchBeam();
-            ChargeCount = 0;
-        }
+        // 아래 블럭은 디버깅용으로 잠깐 제외
 
-        else if (ChargeCount > 30 && ChargeCount < 100)
+        //if (ChargeCount == 100)
+        //{
+        //    LaunchBeam();
+        //    ChargeCount = 0;
+        //}
+
+        //else if (ChargeCount > 5 && ChargeCount < 100)
+        if (ChargeCount > 5)
         {
             BeamCharge();
         }
