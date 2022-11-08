@@ -19,7 +19,8 @@ public class CorgiController : MonoBehaviour
     public Vector3 Vfx_Bark_Offset;
     public float Vfx_Bark_Dur;
 
-    public GameObject Vfx_SuperBark;
+    public GameObject Vfx_SuperBark_1;
+    public GameObject Vfx_SuperBark_2;
     public Vector3 Vfx_SuperBark_Offset;
     public float Vfx_SuperBark_Dur;
 
@@ -187,7 +188,8 @@ public class CorgiController : MonoBehaviour
 
     void LaunchBeam()
     {
-        GameObject addObject = (GameObject)Instantiate(Vfx_SuperBark, transform.position + Vfx_SuperBark_Offset, transform.rotation, transform);
+        var randomVFX = Random.Range(0, 2);
+        GameObject addObject = (GameObject)Instantiate(randomVFX == 0 ? Vfx_SuperBark_2 : Vfx_SuperBark_1, transform.position + Vfx_SuperBark_Offset, transform.rotation, transform);
         //var row = addObject.GetComponent<ParticleSystem>().textureSheetAnimation.rowIndex;
         //row = Random.Range(0, 4);
         Destroy(addObject, Vfx_SuperBark_Dur);
