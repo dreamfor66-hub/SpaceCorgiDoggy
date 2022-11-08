@@ -62,14 +62,17 @@ public class CorgiController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "PlanetCollider")
+        var tag = collision.gameObject.tag;
+        if (tag == "PlanetCollider")
         {
             Debug.Log("행성에 부딪힘ㅠ");
             var pc = collision.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
+            var bc = pc.batteryCollider;
             Destroy(collision.gameObject);
             pc.isDestroy = true;
+            bc.gameObject.SetActive(true);
         }
-        else if (collision.gameObject.tag == "BatteryCollider")
+        else if (tag == "BatteryCollider")
         {
             Debug.Log("배터리 먹음");
             Destroy(collision.gameObject);
@@ -228,6 +231,7 @@ public class CorgiController : MonoBehaviour
         {
             var pc = colls.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
             pc.isDestroy = true;
+            pc.gameObject.SetActive(true);
             Destroy(colls); // 콜라이더는 즉시 삭제
         }
 

@@ -138,6 +138,7 @@ MonoBehaviour:
   destroyed: {fileID: 8583484385510707999}
   speed: 0
   COMPLETE_DESTROY_DELAY: 20
+  batteryCollider: {fileID: 7294283628592699189}
   isDestroy: 0
 --- !u!1 &8583484385315227666
 GameObject:
@@ -466,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3979579861685001815
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class PlanetController : MonoBehaviour
     public GameObject destroyed;
     public float speed = 0.0f;
     public float COMPLETE_DESTROY_DELAY = 20f;
+    public Collider batteryCollider;
 
     public bool isDestroy = false;
     // Start is called before the first frame update
