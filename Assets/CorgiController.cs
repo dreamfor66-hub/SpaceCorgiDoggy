@@ -206,7 +206,8 @@ public class CorgiController : MonoBehaviour
 
         foreach (Collider colls in HitTargets)
         {
-            colls.gameObject.transform.root.GetComponentInChildren<PlanetController>().isDestroy = true;
+            var pc = colls.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
+            pc.isDestroy = true;
         }
 
 
