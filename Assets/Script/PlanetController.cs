@@ -5,6 +5,7 @@ public class PlanetController : MonoBehaviour
     public GameObject active;
     public GameObject destroyed;
     public Collider colliderSelf;
+    public float speed = 0.0f;
 
     public bool isDestroy = false;
     // Start is called before the first frame update
