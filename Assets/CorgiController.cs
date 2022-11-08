@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class CorgiController : MonoBehaviour
     public GameObject Vfx_Bark;
     public Vector3 Vfx_Bark_Offset;
     public float Vfx_Bark_Dur;
-    
+
     public GameObject Vfx_SuperBark;
     public Vector3 Vfx_SuperBark_Offset;
     public float Vfx_SuperBark_Dur;
@@ -32,7 +31,7 @@ public class CorgiController : MonoBehaviour
     //private RaycastHit hit;
     //private Vector3 rayDir;
 
-    public List<Collider> HitTargets = new List<Collider>();
+    public HashSet<Collider> HitTargets = new HashSet<Collider>();
     public float ChargeCount = 0;
 
     // Start is called before the first frame update
@@ -49,12 +48,12 @@ public class CorgiController : MonoBehaviour
         moveDirCheck();
         InputCheck();
         MoveScroll();
-        
+
     }
 
     private void Update()
     {
-        
+
         BarkInputCheck();
         ChargeCountCheck();
         //ray = new Ray(transform.position, transform.right);
@@ -65,7 +64,7 @@ public class CorgiController : MonoBehaviour
     {
         moveInput.x = Input.GetAxis("Vertical");
         moveDir = Vector3.up * moveInput.x;
-        
+
         float ly = size.y * 0.5f - height;
         float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
         transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, clampY, transform.position.z), 0.2f);
@@ -83,7 +82,7 @@ public class CorgiController : MonoBehaviour
     {
         //rb.velocity = moveDir * moveSpd * Time.deltaTime;
         //transform.position += moveDir * moveSpd * Time.deltaTime;
-        transform.position += moveDir * moveSpd *Time.deltaTime;
+        transform.position += moveDir * moveSpd * Time.deltaTime;
     }
     void MoveScroll()
     {
@@ -100,27 +99,27 @@ public class CorgiController : MonoBehaviour
 
     void Bark()
     {
-        GameObject addObject = (GameObject)Instantiate(Vfx_Bark, transform.position+Vfx_Bark_Offset, transform.rotation, transform);
+        GameObject addObject = (GameObject)Instantiate(Vfx_Bark, transform.position + Vfx_Bark_Offset, transform.rotation, transform);
         Destroy(addObject, Vfx_Bark_Dur);
     }
 
-    void DrawRay(Vector3 startPos, Vector3 direction, float dist, int index)
+    void DrawRay(Vector3 startPos, Vector3 direction, float dist, int index, bool needHitTest = false)
     {
         if (reflections < index) return;
 
         lineRenderer.positionCount = index + 2;
         RaycastHit hit1;
-        if (Physics.Raycast(startPos,direction,out hit1, dist))
+        if (Physics.Raycast(startPos, direction, out hit1, dist))
         {
             if (hit1.collider.tag == "HurtCollider")
             {
-                if(!HitTargets.Contains(hit1.collider))
+                if (needHitTest)
                 {
                     HitTargets.Add(hit1.collider);
                 }
-                
+
                 lineRenderer.SetPosition(index + 1, hit1.point);
-                DrawRay(hit1.point, Vector3.Reflect(direction, hit1.normal), dist, index + 1);
+                DrawRay(hit1.point, Vector3.Reflect(direction, hit1.normal), dist, index + 1, needHitTest);
             }
             else
             {
@@ -194,15 +193,18 @@ public class CorgiController : MonoBehaviour
         Destroy(addObject, Vfx_SuperBark_Dur);
 
         lineRenderer.positionCount = 0;
-        DrawRay(transform.position, Vector3.zero, 0, 0);
-        // 딱 한번만 발생할 항목
+
+        Vector3 startPos = transform.position;
+        Vector3 direction = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z)) - transform.position;
+        DrawRay(startPos, direction, maxLength, 0, true);
+        DrawRay(startPos, Vector3.zero, 0, 0, false);
 
         ChargeCount = 0;
         Debug.Log("레이저빔 발사!!!");
 
-        
 
-        foreach(Collider colls in HitTargets)
+
+        foreach (Collider colls in HitTargets)
         {
             colls.gameObject.transform.root.GetComponentInChildren<PlanetController>().isDestroy = true;
         }
