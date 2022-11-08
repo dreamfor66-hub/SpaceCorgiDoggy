@@ -360,7 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291580330}
   - component: {fileID: 291580329}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Corgidoggy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1080,7 +1080,9 @@ GameObject:
   - component: {fileID: 1664317572}
   - component: {fileID: 1664317573}
   - component: {fileID: 1664317574}
-  m_Layer: 0
+  - component: {fileID: 1664317576}
+  - component: {fileID: 1664317575}
+  m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,7 +1103,6 @@ Transform:
   m_Children:
   - {fileID: 2063062569}
   - {fileID: 291580330}
-  - {fileID: 1845883533}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1121,7 +1122,7 @@ MonoBehaviour:
   scrollSpd: 1
   moveInput: {x: 0, y: 0}
   moveDir: {x: 0, y: 0, z: 0}
-  colliderSelf: {fileID: 0}
+  colliderSelf: {fileID: 1664317575}
   center: {x: 0, y: 0}
   size: {x: 0, y: 7.5}
   Vfx_Bark: {fileID: 106150, guid: 9dee279dde7773842bd2a9ae8e027aa4, type: 3}
@@ -1237,6 +1238,35 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!65 &1664317575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664317571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.55, y: 1.18, z: 1}
+  m_Center: {x: 0.29, y: -0.02, z: 0}
+--- !u!54 &1664317576
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664317571}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 72
+  m_CollisionDetection: 0
 --- !u!1 &1797432371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797432372}
   - component: {fileID: 1797432373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KakaoTalk_20221107_210425547
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1357,51 +1387,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1845883532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1845883533}
-  - component: {fileID: 1845883534}
-  m_Layer: 0
-  m_Name: HurtBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1845883533
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845883532}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0.09, z: 0}
-  m_LocalScale: {x: 0.76, y: 1.15, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1664317572}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1845883534
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845883532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1 &1852054944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,7 +1397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1852054945}
   - component: {fileID: 1852054946}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1602,7 +1587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063062569}
   - component: {fileID: 2063062570}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: corgidoggy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

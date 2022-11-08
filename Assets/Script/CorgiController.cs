@@ -58,8 +58,17 @@ public class CorgiController : MonoBehaviour
         BarkInputCheck();
         ChargeCountCheck();
         //ray = new Ray(transform.position, transform.right);
-
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlanetCollider")
+        {
+            var pc = collision.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
+            pc.isDestroy = true;
+        }
+    }
+    /// 内扁 <=> [青己, 硅磐府] 面倒眉农 饶 利例洒 贸府
 
     void moveDirCheck()
     {
@@ -110,7 +119,8 @@ public class CorgiController : MonoBehaviour
 
         lineRenderer.positionCount = index + 2;
         RaycastHit hit1;
-        if (Physics.Raycast(startPos, direction, out hit1, dist))
+        int layerMask = 1 << LayerMask.NameToLayer("Default");
+        if (Physics.Raycast(startPos, direction, out hit1, dist, layerMask))
         {
             if (hit1.collider.tag == "HurtCollider")
             {
