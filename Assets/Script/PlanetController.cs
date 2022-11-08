@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetController : MonoBehaviour
@@ -24,8 +22,8 @@ public class PlanetController : MonoBehaviour
         {
             colliderSelf.enabled = false;
             active.SetActive(false);
-            destroyed.SetActive(true) ;
-            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.2f, 1.2f, 1.2f), 0.2f*Time.deltaTime);
+            destroyed.SetActive(true);
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.2f, 1.2f, 1.2f), 0.2f * Time.deltaTime);
 
 
             Invoke("DestroyPlanet", 0.5f);
