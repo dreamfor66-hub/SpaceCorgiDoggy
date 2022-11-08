@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpd: 15
-  scrollSpd: 0
+  scrollSpd: 2
   moveInput: {x: 0, y: 0}
   moveDir: {x: 0, y: 0, z: 0}
   colliderSelf: {fileID: 0}
@@ -1580,6 +1580,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPlanetBattery: {fileID: 8583484385126461510, guid: 0f0d380d95dbb8f4eb7a10f13cadcac5, type: 3}
+  COUNT_MIN: 90
+  COUNT_MAX: 100
+  POS_X_INIT: 10
+  POS_X_GAP: 5
+  POS_X_JITTER: 2.5
+  POS_Y_MIN: -6
+  POS_Y_MAX: 6
+  SCALE_MIN: 0.2
+  SCALE_MAX: 0.7
 --- !u!1 &2063062568
 GameObject:
   m_ObjectHideFlags: 0
