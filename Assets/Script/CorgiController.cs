@@ -64,8 +64,15 @@ public class CorgiController : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlanetCollider")
         {
+            Debug.Log("행성에 부딪힘ㅠ");
             var pc = collision.gameObject.transform.parent.GetComponentInChildren<PlanetController>();
+            Destroy(collision.gameObject);
             pc.isDestroy = true;
+        }
+        else if (collision.gameObject.tag == "BatteryCollider")
+        {
+            Debug.Log("배터리 먹음");
+            Destroy(collision.gameObject);
         }
     }
     /// 코기 <=> [행성, 배터리] 충돌체크 후 적절히 처리
